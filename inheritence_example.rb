@@ -16,7 +16,6 @@
 
 
 class Vehicle
-  
   def initialize
     @speed = 0
     @direction = 'north'
@@ -36,53 +35,44 @@ class Vehicle
 end
 
 class Car < Vehicle
-
-  def initialize
-    super
-    @fuel = "10
-    @make = "Honda"
-    @model = "Accord"
-  end 
-  def honk_horn
-    puts "Beeeeeeep!"
+  def initialize(input_options)
+    super()
+    @fuel = input_options[:fuel]
+    @make = input_options[:make]
+    @model = input_options[:model]
   end
 
-  def fuel 
-    @fuel 
-  end 
-
-  def make
-    @make 
-  end 
-
-  def model 
-    @model 
+  def honk_horn
+    puts "Beeeeeeep!"
   end
 end
 
 class Bike < Vehicle
-  
+  def initialize(input_options)
+    super()
+    @speed = input_options[:speed]  
+    @type = input_options[:type]
+    @weight = input_options[:weight]
+  end
+
   def ring_bell
     puts "Ring ring!"
   end
-
-  def speed 
-    @speed
-  end 
-
-  def type
-    @type
-  end 
-
-  def weight 
-    @weight 
-  end 
-
 end
 
-car = Car.new
-bike = Bike.new 
+car = Car.new(
+              fuel: 10,
+              make: "Toyota",
+              model: "Corrolla"
+              )
+bike = Bike.new(
+                speed: 15,
+                weight: 27,
+                type: "mountain"
+                )
+
+p car
 p bike
-car.honk_horn
-bike.turn("South")
-p bike
+# car.honk_horn
+# bike.turn("South")
+# p bike
